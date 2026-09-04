@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ScommessaBet Login: come accedere al conto gioco</title>
+<meta name="description" content="Scopri come effettuare il login ScommessaBet da desktop e mobile, gestire cookie ed errori di accesso e attivare il conto gioco.">
+<link rel="canonical" href="https://scommessabet-it.com/accesso/">
+<link rel="alternate" hreflang="it-it" href="https://scommessabet-it.com/accesso/">
+<link rel="alternate" hreflang="x-default" href="https://scommessabet-it.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://scommessabet-it.com/"}, {"@type": "ListItem", "position": 2, "name": "Accesso", "item": "https://scommessabet-it.com/accesso/"}]}</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+img{display:block;max-width:100%}
+:root{
+ --navy:#123a2a; --navy2:#1a5540; --gold:#d2a219; --gold-l:#f2d580;
+ --blue:#1b6b4a; --ink:#1b2027; --mut:#5d6875; --line:#e2e6ee; --soft:#f5f7fb;
+ --ok:#177a4a; --warn:#9a6a08; --warnbg:#fdf6e3;
+}
+body{font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* шапка: логотип + нав-полоса, прехедера нет */
+.hd{border-bottom:1px solid var(--line);background:#fff}
+.hd .wrap{display:flex;align-items:center;gap:22px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.hd .lg img{height:52px;width:auto}
+.hd .sp{flex:1}
+.hd .hcta{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;
+ font-weight:700;font-size:14px;letter-spacing:.02em;padding:11px 18px;border-radius:6px}
+.hd .hcta:hover{background:var(--navy2);text-decoration:none}
+.nav{background:var(--navy)}
+.nav .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav .wrap::-webkit-scrollbar{display:none}
+.nav a{color:#c9d3e5;font-weight:700;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;
+ padding:14px 16px;white-space:nowrap;border-bottom:3px solid transparent}
+.nav a:hover{color:#fff;text-decoration:none}
+.nav a.on{color:#fff;border-bottom-color:var(--gold)}
+
+
+/* главный оффер (первый экран) */
+.offer{background:linear-gradient(135deg,var(--navy) 0%,#1d6047 100%);color:#fff;
+ border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+ margin:24px 0 6px;box-shadow:0 10px 28px rgba(12,44,32,.20)}
+.offer .ologo{background:#0c2a1e;border-radius:8px;padding:12px 16px;flex:0 0 auto;display:flex;align-items:center}
+.offer .ologo img{height:30px;width:auto;object-fit:contain}
+.offer .ologo.lt{background:#fff}
+.offer .oinfo{flex:1;min-width:200px}
+.offer .on{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;
+ letter-spacing:.1em;color:#5fe0a0;text-transform:uppercase}
+.offer .on i{width:8px;height:8px;border-radius:50%;background:#3ddc84;box-shadow:0 0 0 4px rgba(61,220,132,.22)}
+.offer h2{font-size:21px;margin:5px 0 3px;letter-spacing:-.01em}
+.offer .oline{color:#c3cee4;font-size:14.5px}
+.offer .oline b{color:var(--gold-l)}
+.offer .obtn{background:var(--gold);color:#20180a;font-weight:800;font-size:15px;letter-spacing:.04em;
+ padding:14px 26px;border-radius:8px;white-space:nowrap}
+.offer .obtn:hover{background:var(--gold-l);text-decoration:none}
+
+/* раскладка: сайдбар + контент */
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;margin:26px 0 40px;align-items:start}
+/* без min-width:0 широкая таблица внутри распирает трек и ломает мобильную ширину */
+.layout>*{min-width:0}
+.side{border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.side h3{background:var(--soft);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+ color:var(--mut);padding:11px 14px;border-bottom:1px solid var(--line)}
+.side ul{list-style:none}
+.side li a{display:flex;align-items:center;gap:10px;padding:11px 14px;color:var(--ink);
+ font-size:14.5px;border-bottom:1px solid #eef1f6}
+.side li:last-child a{border-bottom:0}
+.side li a:hover{background:var(--soft);text-decoration:none}
+.side li a svg{width:19px;height:19px;color:var(--mut);flex:0 0 19px}
+.side li a span{flex:1}
+.side li a em{font-style:normal;color:#93a0b1;font-size:12.5px;font-variant-numeric:tabular-nums}
+.side .sbox{padding:14px}
+.side .sbox p{font-size:13.5px;color:var(--mut);margin-bottom:10px}
+.side .sbtn{display:block;text-align:center;background:var(--navy);color:#fff;font-weight:700;
+ font-size:14px;padding:11px;border-radius:7px}
+.side .sbtn:hover{background:var(--navy2);text-decoration:none}
+
+h1{font-size:30px;line-height:1.25;letter-spacing:-.02em;margin-bottom:12px}
+.lead{font-size:17px;color:#3f4a59;margin-bottom:22px}
+h2{font-size:23px;line-height:1.3;letter-spacing:-.015em;margin:34px 0 12px}
+h3{font-size:18px;margin:22px 0 8px}
+p{margin-bottom:14px}
+.seo ul,.seo ol{margin:0 0 16px 22px}
+.seo li{margin-bottom:6px}
+
+/* модуль палинсесто (архив) */
+.pal{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:22px 0}
+.pal .pt{background:var(--navy);color:#fff;padding:13px 16px;display:flex;align-items:center;
+ justify-content:space-between;gap:12px;flex-wrap:wrap}
+.pal .pt b{font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.pal .pt span{font-size:12.5px;color:#9fb0cd}
+.pal .disc{display:flex;gap:16px;padding:11px 16px;background:var(--soft);border-bottom:1px solid var(--line);
+ overflow-x:auto;scrollbar-width:none}
+.pal .disc::-webkit-scrollbar{display:none}
+.pal .disc a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
+ color:var(--ink);white-space:nowrap}
+.pal .disc a svg{width:18px;height:18px;color:var(--gold)}
+.tblwrap{overflow-x:auto}
+.pal table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
+.pal th{background:#fafbfd;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);
+ text-align:center;padding:10px 8px;border-bottom:1px solid var(--line);font-weight:700}
+.pal th:first-child{text-align:left;padding-left:16px}
+.pal td{padding:12px 8px;text-align:center;border-bottom:1px solid #eef1f6;font-variant-numeric:tabular-nums}
+.pal td:first-child{text-align:left;padding-left:16px;font-weight:600}
+.pal tr:last-child td{border-bottom:0}
+.pal .mk{color:var(--mut);font-size:13px}
+.pal .pf{padding:12px 16px;background:var(--soft);font-size:12.5px;color:var(--mut);border-top:1px solid var(--line)}
+
+/* карточки альтернатив */
+.alts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+.alt{border:1px solid var(--line);border-radius:11px;padding:16px;display:flex;flex-direction:column;
+ gap:10px;transition:box-shadow .16s,transform .16s}
+.alt:hover{box-shadow:0 8px 22px rgba(12,44,32,.1);transform:translateY(-2px)}
+.alt .chip{height:54px;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:9px}
+.alt .chip.dk{background:#0c2a1e}
+.alt .chip.lt{background:#fff;border:1px solid var(--line)}
+.alt .chip img{max-height:100%;width:auto;object-fit:contain}
+.alt .tag{font-size:10.5px;letter-spacing:.09em;font-weight:800;color:var(--gold);text-transform:uppercase}
+.alt b{font-size:16px}
+.alt .of{font-size:13.5px;color:var(--mut);flex:1}
+.alt .rt{display:flex;align-items:center;gap:5px;font-size:13.5px;font-weight:700}
+.alt .rt svg{width:15px;height:15px;color:var(--gold)}
+.alt .ab{display:block;text-align:center;background:var(--gold);color:#20180a;font-weight:800;
+ font-size:13.5px;letter-spacing:.04em;padding:11px;border-radius:7px}
+.alt .ab:hover{background:var(--gold-l);text-decoration:none}
+
+/* витрина слотов */
+.slots{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:20px 0}
+.slot{border-radius:9px;overflow:hidden;position:relative;background:#0c2a1e;display:block}
+.slot img{width:100%;height:auto;aspect-ratio:325/234;object-fit:cover;transition:transform .2s}
+.slot span{position:absolute;left:0;right:0;bottom:0;padding:16px 9px 7px;color:#fff;font-size:12px;
+ font-weight:600;line-height:1.25;background:linear-gradient(180deg,rgba(8,12,22,0) 0%,rgba(8,12,22,.86) 62%)}
+.slot:hover{text-decoration:none}
+.slot:hover img{transform:scale(1.04)}
+
+/* пилюли-кнопки и CTA-полоска — другой формат CTA */
+.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}
+.btnrow a{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:22px;
+ padding:9px 15px;font-size:13.5px;font-weight:700;color:var(--ink);background:#fff}
+.btnrow a:hover{border-color:var(--gold);background:#fffaf0;text-decoration:none}
+.btnrow a svg{width:14px;height:14px;color:var(--gold)}
+.ctastrip{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+ background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--gold);
+ border-radius:9px;padding:16px 20px;margin:24px 0}
+.ctastrip p{margin:0;font-size:15px}
+.ctastrip a{background:var(--navy);color:#fff;font-weight:700;font-size:14px;padding:11px 22px;
+ border-radius:7px;white-space:nowrap}
+.ctastrip a:hover{background:var(--navy2);text-decoration:none}
+
+/* кнопка в строке таблицы сравнения */
+.pal td .tb{display:inline-block;background:var(--gold);color:#20180a;font-weight:800;font-size:12.5px;
+ letter-spacing:.03em;padding:8px 16px;border-radius:6px;white-space:nowrap}
+.pal td .tb:hover{background:var(--gold-l);text-decoration:none}
+.pal td a{font-weight:700}
+
+/* FAQ */
+details{border:1px solid var(--line);border-radius:9px;margin-bottom:9px;background:#fff}
+summary{padding:14px 16px;font-weight:700;font-size:15.5px;cursor:pointer;list-style:none;
+ display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:21px;font-weight:400;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding:0 16px 15px;margin:0;color:#3f4a59;font-size:15px}
+
+/* футер */
+.ft2{background:var(--navy);color:#a8b6cd;margin-top:44px;padding:34px 0 26px;font-size:14px}
+.ft2 .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;margin-bottom:24px}
+.ft2 img.flg{height:38px;width:auto;margin-bottom:12px}
+.ft2 h4{color:#fff;font-size:13px;letter-spacing:.09em;text-transform:uppercase;margin-bottom:11px}
+.ft2 ul{list-style:none}
+.ft2 li{margin-bottom:7px}
+.ft2 a{color:#a8b6cd}
+.ft2 a:hover{color:#fff}
+.ft2 .cmp{border-top:1px solid #21503c;padding-top:18px;display:flex;gap:14px;align-items:flex-start;
+ font-size:13px;line-height:1.6;color:#8fa0ba}
+.ft2 .age{flex:0 0 auto;border:2px solid #d1462f;color:#ff7a5e;font-weight:800;border-radius:50%;
+ width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:14px}
+
+/* sticky-панель */
+.sticky{position:fixed;left:50%;bottom:16px;transform:translate(-50%,140%);width:min(560px,calc(100% - 32px));
+ background:rgba(11,38,27,.97);color:#fff;border-radius:12px;padding:11px 14px;display:flex;align-items:center;
+ gap:13px;box-shadow:0 14px 38px rgba(6,26,18,.42);transition:transform .28s ease;z-index:60;
+ backdrop-filter:blur(6px)}
+.sticky.show{transform:translate(-50%,0)}
+.sticky .sl{background:#fff;border-radius:6px;padding:7px 9px;flex:0 0 auto;display:flex;align-items:center}
+.sticky .sl img{height:20px;width:auto;object-fit:contain}
+.sticky .si{flex:1;min-width:0}
+.sticky .si b{display:block;font-size:14px;line-height:1.25}
+.sticky .si span{font-size:12px;color:#9fb0cd;display:block;white-space:nowrap;overflow:hidden;
+ text-overflow:ellipsis}
+.sticky .sb{background:var(--gold);color:#20180a;font-weight:800;font-size:13.5px;padding:10px 18px;
+ border-radius:7px;white-space:nowrap}
+.sticky .sb:hover{text-decoration:none;background:var(--gold-l)}
+body{padding-bottom:84px}  /* панель fixed — резерв, чтобы не накрывала футер */
+
+@media(max-width:980px){
+ .layout{grid-template-columns:minmax(0,1fr);gap:22px}
+ .alts{grid-template-columns:repeat(2,1fr)}
+ .slots{grid-template-columns:repeat(4,1fr)}
+ .ft2 .cols{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+ .wrap{padding:0 16px}
+ .hd .lg img{height:40px}
+ h1{font-size:25px}
+ h2{font-size:20px}
+ .offer{padding:18px;gap:14px}
+ .offer .obtn{width:100%;text-align:center}
+ .alts{grid-template-columns:1fr}
+ .slots{grid-template-columns:repeat(3,1fr)}
+ /* колонка-описание уходит, иначе CTA прячется за горизонтальный скролл */
+ .hcol{display:none}
+ table.cmp{min-width:0}
+ table.cmp td,table.cmp th{padding-left:6px;padding-right:6px;font-size:13px}
+ table.cmp td:first-child,table.cmp th:first-child{padding-left:12px}
+ table.cmp td .tb{padding:8px 12px}
+ .ft2 .cols{grid-template-columns:1fr}
+ .ctastrip a{width:100%;text-align:center}
+ .sticky{left:0;right:0;bottom:0;width:100%;transform:translateY(140%);border-radius:12px 12px 0 0}
+ .sticky.show{transform:translateY(0)}
+ .sticky .si span{display:none}
+}
+
+.subtop{background:var(--navy);color:#fff;padding:26px 0 24px}
+.subtop .bc{font-size:12.5px;color:#8fa0ba;margin-bottom:9px}
+.subtop .bc a{color:#8fa0ba}
+.subtop .bc a:hover{color:#fff}
+.subtop h1{font-size:28px;margin:0;letter-spacing:-.02em}
+@media(max-width:640px){.subtop h1{font-size:23px}}
+
+
+/* плашки сторов */
+.stores{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+.st{border:1px solid var(--line);border-radius:11px;padding:16px;display:block}
+.st b{display:block;font-size:15px;margin-bottom:4px}
+.st span{font-size:13px;color:var(--mut)}
+.st.off{background:var(--soft);opacity:.72}
+.st.on{border-color:var(--gold);background:#fffaf0}
+.st.on:hover{text-decoration:none;box-shadow:0 8px 20px rgba(12,44,32,.12)}
+.st.on span{color:var(--blue);font-weight:600}
+@media(max-width:760px){.stores{grid-template-columns:1fr}}
+
+/* объяснялка RTP */
+.expl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.expl div{border:1px solid var(--line);border-radius:10px;padding:15px}
+.expl b{display:block;font-size:14px;margin-bottom:5px}
+.expl p{margin:0;font-size:13.5px;color:var(--mut)}
+@media(max-width:760px){.expl{grid-template-columns:1fr}}
+
+/* карточки рынков / категорий */
+.kv{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0}
+.kv div{border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:9px;padding:14px 16px}
+.kv b{display:block;font-size:15px;margin-bottom:4px}
+.kv p{margin:0;font-size:13.5px;color:var(--mut)}
+@media(max-width:640px){.kv{grid-template-columns:1fr}}
+
+/* мок-форма логина */
+.mock{position:relative;border:1px solid var(--line);border-radius:11px;padding:22px;
+ background:var(--soft);max-width:420px;margin:22px 0}
+.mock label{display:block;font-size:12.5px;color:var(--mut);margin-bottom:5px}
+.mock i{display:block;background:#fff;border:1px solid var(--line);border-radius:7px;
+ height:40px;margin-bottom:13px}
+.mock .mb{background:#b9c2cf;color:#fff;text-align:center;font-weight:800;padding:12px;
+ border-radius:7px;font-size:14px}
+.mock .ov{position:absolute;inset:0;background:rgba(21,32,57,.9);color:#fff;border-radius:11px;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;
+ text-align:center}
+.mock .ov b{font-size:15px}
+.mock .ov a{background:var(--gold);color:#20180a;font-weight:800;font-size:14px;padding:11px 22px;
+ border-radius:7px}
+.mock .ov a:hover{text-decoration:none;background:var(--gold-l)}
+
+/* шаги регистрации */
+.steps{counter-reset:s;list-style:none;margin:20px 0}
+.steps li{counter-increment:s;position:relative;padding:0 0 16px 44px;font-size:15px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;
+ border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:14px;
+ display:flex;align-items:center;justify-content:center}
+.steps li b{display:block}
+
+/* оценочная карта */
+.score{border:1px solid var(--line);border-radius:11px;padding:18px;margin-bottom:14px}
+.score .sh{display:flex;align-items:center;gap:13px;margin-bottom:14px;flex-wrap:wrap}
+/* ширину чипа задаём жёстко: у svg без intrinsic-размеров width:auto в флексе даёт 0 */
+.score .sh .chip{width:132px;height:44px;border-radius:7px;display:flex;align-items:center;
+ justify-content:center;padding:8px;flex:0 0 132px}
+.score .sh .chip.dk{background:#111a2e}
+.score .sh .chip.lt{background:#fff;border:1px solid var(--line)}
+.score .sh .chip img{width:100%;height:100%;object-fit:contain}
+.score .sh b{font-size:17px;flex:1}
+.score .sh em{font-style:normal;font-weight:800;font-size:19px;color:var(--gold)}
+.bars{display:grid;gap:9px;margin-bottom:14px}
+.bars .r{display:grid;grid-template-columns:130px 1fr 34px;align-items:center;gap:11px;font-size:13.5px}
+.bars .t{height:8px;border-radius:5px;background:#eaeef4;overflow:hidden}
+.bars .t i{display:block;height:100%;background:var(--gold);border-radius:5px}
+.bars .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+@media(max-width:640px){.bars .r{grid-template-columns:96px 1fr 30px;font-size:12.5px}}
+.score .sb{display:block;text-align:center;background:var(--gold);color:#20180a;font-weight:800;
+ font-size:14px;padding:12px;border-radius:7px}
+.score .sb:hover{background:var(--gold-l);text-decoration:none}
+
+.pf-note{font-size:13px;color:var(--mut);background:var(--soft);border:1px solid var(--line);
+ border-radius:9px;padding:13px 16px;margin:4px 0 20px}
+
+/* низкая оценка бренда — контрастный красный блок */
+.lowbox{border:1px solid #f0cfc6;background:#fdf3f1;border-radius:12px;padding:20px;margin:22px 0 14px}
+.lowbox .lh{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+.lowbox .lh>div{flex:0 0 auto;text-align:center;background:#b0341f;color:#fff;border-radius:11px;
+ padding:12px 22px;min-width:132px}
+.lowbox .lt{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.lowbox .lh b{font-size:42px;line-height:1.05;font-weight:800;display:block}
+.lowbox .lh b small{font-size:17px;font-weight:700;opacity:.75}
+.lowbox .lh p{flex:1;min-width:220px;margin:0;font-size:15px;color:#7a3a2c}
+.bars.low .t i{background:#c9432b}
+
+/* увод на высокие рейтинги */
+.switch{border:2px solid var(--gold);border-radius:12px;padding:20px;margin:0 0 26px;
+ background:linear-gradient(180deg,#fffdf7 0%,#fff 100%)}
+.sw-t b{display:block;font-size:19px;letter-spacing:-.01em}
+.sw-t p{margin:4px 0 16px;font-size:14.5px;color:var(--mut)}
+.sw-g{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:16px}
+.sw-c{border:1px solid var(--line);border-radius:10px;padding:14px 10px;text-align:center;
+ background:#fff;display:block;transition:transform .16s,box-shadow .16s}
+.sw-c:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 8px 20px rgba(21,32,57,.12)}
+.sw-c em{display:block;font-style:normal;font-size:30px;font-weight:800;color:var(--ok);line-height:1}
+.sw-c span{display:block;font-size:14px;font-weight:700;color:var(--ink);margin:5px 0 7px}
+.sw-c i{font-style:normal;font-size:12px;font-weight:700;color:var(--blue)}
+.sw-b{display:block;text-align:center;background:var(--gold);color:#20180a;font-weight:800;
+ font-size:15px;padding:14px;border-radius:9px}
+.sw-b:hover{background:var(--gold-l);text-decoration:none}
+@media(max-width:760px){.sw-g{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+ .lowbox .lh b{font-size:36px}
+ .lowbox .lh>div{min-width:0;flex:1}
+}
+
+/* нижняя перелинковка кластера */
+.cfoot{border-top:1px solid var(--line);margin-top:34px;padding-top:20px;display:flex;
+ flex-wrap:wrap;gap:9px}
+.cfoot a{border:1px solid var(--line);border-radius:20px;padding:8px 15px;font-size:13.5px;
+ font-weight:600;color:var(--ink)}
+.cfoot a:hover{border-color:var(--gold);background:#fffaf0;text-decoration:none}
+</style>
+</head>
+<body>
+<svg style="display:none" aria-hidden="true"><defs>
+<symbol id="i-calcio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 6.4l3.3 2.4-1.3 3.9h-4L8.7 8.8 12 6.4zM12 3v3.4M4.5 9.6l3.9-.8M19.5 9.6l-3.9-.8M7.3 19.2l2.7-6.5M16.7 19.2L14 12.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+<symbol id="i-tennis" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.6 6.2c3.4 2 5 5.2 4.6 9.6M19.4 6.2c-3.4 2-5 5.2-4.6 9.6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-basket" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.8v18.4M2.8 12h18.4M5.5 5.5c4 3.2 4 9.8 0 13M18.5 5.5c-4 3.2-4 9.8 0 13" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+<symbol id="i-volley" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.8c-3 4-3.4 8.4-1.2 12.9M21 10.2c-4.8-.9-9 .5-12.2 4.2M6.2 20.3c1.6-4.6 4.8-7.6 9.5-8.8" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+<symbol id="i-hockey" viewBox="0 0 24 24"><ellipse cx="15.6" cy="12" rx="5.6" ry="3.4" fill="currentColor"/><path d="M2.6 8.4h5.2M1.8 12h4.2M2.6 15.6h5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+<symbol id="i-snooker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="3.7" fill="currentColor"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.6l5 5L19.5 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.6l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.8l5.9-.8L12 3.6z" fill="currentColor"/></symbol>
+</defs></svg>
+<header class="hd"><div class="wrap">
+  <a class="lg" href="/"><img src="/assets/logo.png" alt="ScommessaBet" width="1493" height="260"></a>
+  <span class="sp"></span>
+  <a class="hcta" href="/referral-link?sub_id_1=n1" rel="nofollow">Piattaforme attive</a>
+</div></header>
+<nav class="nav"><div class="wrap"><a href="/">Home</a><a href="/scommesse/">Scommesse</a><a href="/app/">App</a><a href="/casino/">Casinò</a><a href="/poker/">Poker</a><a href="/accesso/" class="on">Accesso</a><a href="/recensioni/">Recensioni</a></div></nav>
+
+<div class="subtop"><div class="wrap">
+  <div class="bc"><a href="/">Home</a> › Accesso</div>
+  <h1>Accesso ScommessaBet: come fare il login al conto gioco</h1>
+</div></div>
+
+<div class="wrap"><a class="offer" href="/referral-link?sub_id_1=n1" rel="nofollow">
+  <span class="ologo"><img src="/assets/logos/n1bet-logo.svg" alt="N1 Bet"></span>
+  <span class="oinfo">
+    <span class="on"><i></i>Online · attiva oggi</span>
+    <h2>N1 Bet</h2>
+    <span class="oline">Bonus fino a 5.000 € + 200 giri gratis · valutazione <b>4.6/5</b></span>
+  </span>
+  <span class="obtn">GIOCA ORA</span>
+</a></div>
+
+<div class="wrap"><div class="layout">
+  <aside class="side">
+  <h3>Discipline del palinsesto</h3>
+  <ul><li><a href="/scommesse/"><svg><use href="#i-calcio"/></svg><span>Calcio</span></a></li><li><a href="/scommesse/"><svg><use href="#i-tennis"/></svg><span>Tennis</span></a></li><li><a href="/scommesse/"><svg><use href="#i-basket"/></svg><span>Basket</span></a></li><li><a href="/scommesse/"><svg><use href="#i-volley"/></svg><span>Pallavolo</span></a></li><li><a href="/scommesse/"><svg><use href="#i-hockey"/></svg><span>Hockey</span></a></li><li><a href="/scommesse/"><svg><use href="#i-snooker"/></svg><span>Snooker</span></a></li></ul>
+  <h3>Guida ScommessaBet</h3>
+  <ul><li><a href="/scommesse/"><span>Scommesse</span></a></li><li><a href="/app/"><span>App</span></a></li><li><a href="/casino/"><span>Casinò</span></a></li><li><a href="/poker/"><span>Poker</span></a></li><li><a href="/accesso/"><span>Accesso</span></a></li><li><a href="/recensioni/"><span>Recensioni</span></a></li></ul>
+  <h3>Piattaforma attiva</h3>
+  <div class="sbox">
+    <p>Il conto ScommessaBet non serve più: la schedina si apre su una piattaforma attiva.</p>
+    <a class="sbtn" href="/referral-link?sub_id_1=n1" rel="nofollow">Vedi N1 Bet</a>
+  </div>
+</aside>
+  <main>
+    <p class="lead">La pagina di login non risponde più e non c'è modo di rientrare nel vecchio conto. Se vuoi tornare a giocare, la strada è aprire un conto su una piattaforma attiva: sono pochi minuti.</p>
+    <div class="mock">
+  <label>Username</label><i></i>
+  <label>Password</label><i></i>
+  <div class="mb">ACCEDI</div>
+  <div class="ov">
+    <b>Accesso non più disponibile</b>
+    <a href="/referral-link?sub_id_1=n1" rel="nofollow">Apri un conto su N1 Bet</a>
+  </div>
+</div>
+    <article class="seo"><p>Entrare nel proprio conto gioco è la prima cosa che serve prima di piazzare una qualsiasi giocata. Le credenziali sono quelle create in fase di registrazione: username oppure e-mail, più la password. Con il <b>ScommessaBet login</b> vedi saldo, giocate ancora aperte, movimenti di cassa e impostazioni del profilo. Si entra da desktop o da mobile, e c'è anche un'app iOS — la cui scheda App Store, però, riporta una versione pubblicata circa 2.715 giorni fa.</p>
+<p>L'accesso presuppone un conto gioco registrato e verificato presso un operatore con concessione ADM (ex AAMS).</p>
+<h2>Come accedere a ScommessaBet: procedura passo a passo</h2>
+<p>La schermata di autenticazione ricalca quella di quasi tutti i bookmaker italiani.</p>
+<ol><li>Apri scommessabet.it con un browser aggiornato.</li><li>Clicca <b>“Accedi”</b> in alto nella pagina.</li><li>Inserisci lo <b>username o l'indirizzo e-mail</b> collegato al conto.</li><li>Digita la password facendo attenzione a maiuscole, minuscole e caratteri speciali: il sistema le distingue.</li><li><b>“Ricordami”</b> solo se il dispositivo è tuo. Se compare la richiesta del codice di conferma via SMS o e-mail, inseriscilo.</li><li>Da qui entri nell'area personale: saldo, cronologia, scommesse aperte, cassa.</li></ol>
+<p>I cookie necessari devono restare attivi. Sono quelli che abilitano l'accesso alle aree protette del sito e tengono in piedi la sessione: bloccarli significa restare fuori. Le altre categorie — preferenze, statistici, marketing, non classificati — si gestiscono a parte e non incidono sull'autenticazione; il consenso resta revocabile in qualsiasi momento.</p>
+<p>L'app iOS si presenta come strumento per scommettere in mobilità e ricevere “informazioni, comunicazioni e promozioni”. Ultima nota di versione: “Bug Fix, Managment user agent”. Le valutazioni iOS non risultano disponibili. Sui sistemi recenti, quindi, il browser mobile fa lo stesso lavoro senza sorprese.</p>
+<ol class="steps">
+  <li><b>Scegli la piattaforma</b>Confronta bonus e palinsesto nella tabella in home e
+  apri il sito che ti convince di più.</li>
+  <li><b>Registra il conto</b>Email, dati anagrafici e una password. Bastano un paio di
+  minuti e non è richiesto SPID.</li>
+  <li><b>Verifica l'identità</b>Un documento in corso di validità: si può caricare subito
+  o al primo prelievo, a seconda del sito.</li>
+  <li><b>Deposita e attiva il bonus</b>Il benvenuto si attiva al primo versamento.
+  Requisiti di puntata e scadenze sono nella pagina dell'offerta.</li>
+</ol><h2>Registrazione e attivazione del conto gioco</h2>
+<p>Senza un account registrato e verificato il login non è possibile. Chi non ha ancora un conto clicca <b>“Registrati”</b> e compila il modulo: dati anagrafici, codice fiscale, e-mail, numero di cellulare. Il campo per il codice promozionale o per il bonus di benvenuto è di solito facoltativo.</p>
+<p>Poi si carica un documento d'identità valido: la verifica è un passaggio obbligatorio per la normativa italiana. Nome, cognome e data di nascita sul documento devono coincidere con quanto hai scritto nel modulo, altrimenti la pratica si blocca. L'attivazione richiede in media <b>24–72 ore</b>, come ordine di grandezza: il tempo reale dipende dalla verifica dei dati e da quanto sono leggibili i file inviati. Foto storta fatta di sera sul tavolo della cucina? Rifalla.</p>
+<p>Dopo l'attivazione entri con le stesse credenziali scelte all'apertura. Estremi del concessionario, numero di concessione ADM e collegamento alle probabilità di vincita pubblicate sul sito ADM sono consultabili nell'interfaccia dell'operatore; quel numero non emerge dai materiali disponibili sul marchio.</p>
+<h2>Problemi di accesso e messaggi di errore</h2>
+<p>Un login che non va a buon fine raramente dipende solo dalla password. Cookie bloccati, sessioni scadute, browser vecchi di tre anni: bastano a tenerti fuori dall'area personale anche con credenziali perfette.</p>
+<div class="tblwrap"><table><thead><tr><th>Messaggio o problema</th><th>Causa possibile</th><th>Intervento</th></tr></thead><tbody><tr><td><b>“Autenticazione fallita”</b></td><td>Password errata, Caps Lock attivo o layout della tastiera cambiato</td><td>Riscrivi la password manualmente e controlla maiuscole e simboli</td></tr><tr><td><b>Credenziali non riconosciute</b></td><td>Username o e-mail diversi da quelli registrati</td><td>Prova l'indirizzo usato all'apertura oppure avvia il recupero credenziali</td></tr><tr><td><b>Account bloccato</b></td><td>Troppi tentativi consecutivi non riusciti</td><td>Attendi lo sblocco automatico, se previsto, oppure contatta l'assistenza</td></tr><tr><td><b>Conto sospeso o autoescluso</b></td><td>Stato del conto che impedisce nuove sessioni operative</td><td>Chiedi al supporto una verifica dello stato e delle funzioni disponibili</td></tr><tr><td><b>Sessione scaduta</b></td><td>Inattività prolungata o cookie di sessione eliminato</td><td>Ricarica la pagina ed effettua nuovamente l'accesso</td></tr><tr><td><b>La pagina torna al login</b></td><td>Cookie necessari disabilitati o consenso tecnico non registrato</td><td>Riabilita i cookie necessari, cancella cache e cookie e riavvia il browser</td></tr></tbody></table></div>
+<p>Se non si sblocca nulla, aggiorna Chrome, Safari, Firefox o Edge e riprova in navigazione privata. VPN, proxy, estensioni anti-tracciamento e ad blocker litigano spesso con autenticazione e geolocalizzazione: spegnili per due minuti e capisci subito se il colpevole era uno di loro.</p>
+<h2>Le piattaforme consigliate</h2><div class="alts"><div class="alt">
+    <span class="chip dk"><img src="/assets/logos/n1bet-logo.svg" alt="N1 Bet" loading="lazy"></span>
+    <span class="tag">LA PIÙ SCELTA</span>
+    <b>N1 Bet</b>
+    <span class="of">Bonus fino a 5.000 € + 200 giri gratis</span>
+    <span class="rt"><svg><use href="#i-star"/></svg>4.6/5</span>
+    <a class="ab" href="/referral-link?sub_id_1=n1" rel="nofollow">GIOCA ORA</a>
+  </div><div class="alt">
+    <span class="chip dk"><img src="/assets/logos/slotlair-logo.svg" alt="SlotLair" loading="lazy"></span>
+    <span class="tag">PIÙ GIRI GRATIS</span>
+    <b>SlotLair</b>
+    <span class="of">Bonus fino a 3.000 € + 450 giri gratis</span>
+    <span class="rt"><svg><use href="#i-star"/></svg>4.4/5</span>
+    <a class="ab" href="/referral-link?sub_id_1=slotlair" rel="nofollow">GIOCA ORA</a>
+  </div><div class="alt">
+    <span class="chip lt"><img src="/assets/logos/winnita-logo.svg" alt="Winnita" loading="lazy"></span>
+    <span class="tag">REGISTRAZIONE RAPIDA</span>
+    <b>Winnita</b>
+    <span class="of">Bonus fino a 1.500 € + 300 giri gratis</span>
+    <span class="rt"><svg><use href="#i-star"/></svg>4.2/5</span>
+    <a class="ab" href="/referral-link?sub_id_1=winita" rel="nofollow">GIOCA ORA</a>
+  </div><div class="alt">
+    <span class="chip lt"><img src="/assets/logos/bcgame-logo.jpeg" alt="BC Game" loading="lazy"></span>
+    <span class="tag">CRYPTO</span>
+    <b>BC Game</b>
+    <span class="of">Free bet fino a 100 USD</span>
+    <span class="rt"><svg><use href="#i-star"/></svg>4.0/5</span>
+    <a class="ab" href="/referral-link?sub_id_1=bc" rel="nofollow">GIOCA ORA</a>
+  </div></div><h2>Recupero password e username dimenticati</h2>
+<p>Per cambiare la password clicca <b>“Password dimenticata?”</b> sotto il modulo di accesso. Ti servirà l'e-mail collegata al conto oppure il codice fiscale.</p>
+<p>Arriva un link o un codice di ripristino, e non resta valido a lungo: se lo apri il giorno dopo devi richiederne uno nuovo. La nuova password: almeno otto caratteri, maiuscole, minuscole, numeri e simboli, e diversa da quelle che hai già usato.</p>
+<p>Se il messaggio non arriva:</p>
+<ul><li>guarda in Spam, Posta indesiderata e nella scheda Promozioni;</li><li>ricontrolla l'e-mail carattere per carattere, uno scambio tra .it e .com capita a tutti;</li><li>aspetta qualche minuto prima di chiedere un secondo codice;</li><li>aggiungi il mittente ai contatti consentiti;</li><li>scrivi al supporto indicando lo username, se lo ricordi.</li></ul>
+<p>Per lo username dimenticato può servire una verifica con codice fiscale e dati anagrafici. L'assistenza non ti chiederà mai la password completa: quello che fa è ripristinare le credenziali, non spedirtele via e-mail.</p>
+<h2>Sicurezza dell'account</h2>
+<p>Una password unica, custodita in un password manager, ti mette al riparo dal riciclo: se ti rubano le credenziali su un forum qualsiasi, sul conto gioco non entra nessuno. L'autenticazione a due fattori aggiunge un codice temporaneo al login, ma prima controlla nell'area personale se è disponibile.</p>
+<p>Dopo una sessione da un computer condiviso o dall'ufficio, usa <b>“Esci”</b>: chiudere la scheda non basta. La funzione “Ricordami”, allo stesso modo, va tenuta per smartphone e PC personali. E-mail, SMS o messaggi che chiedono password, codici OTP o i dati completi della carta non hanno niente a che vedere con una normale procedura di assistenza.</p>
+<div class="ctastrip"><p>Scegli una piattaforma attiva e continua a giocare.</p><a href="/referral-link?sub_id_1=n1" rel="nofollow">Vedi le alternative</a></div><div class="btnrow"><a href="/referral-link?sub_id_1=n1" rel="nofollow"><svg><use href="#i-star"/></svg>N1 Bet · 4.6</a><a href="/referral-link?sub_id_1=slotlair" rel="nofollow"><svg><use href="#i-star"/></svg>SlotLair · 4.4</a><a href="/referral-link?sub_id_1=winita" rel="nofollow"><svg><use href="#i-star"/></svg>Winnita · 4.2</a><a href="/referral-link?sub_id_1=bc" rel="nofollow"><svg><use href="#i-star"/></svg>BC Game · 4.0</a></div><h2>Cosa puoi fare dopo l'accesso</h2>
+<p>Il saldo compare nell'intestazione o nel menu del conto. Da lì l'area personale raccoglie le funzioni operative:</p>
+<ul><li>palinsesto pre-match con eventi, mercati e quote, bolletta singola o multipla;</li><li>sezione <b>live</b> con gli eventi già iniziati e quote in movimento; dove previsto, il cash out chiude la giocata prima del fischio finale, con importo variabile in base all'andamento del match;</li><li>eventuale area casinò con slot, giochi da tavolo e titoli live;</li><li>cronologia delle giocate, movimenti e sezione cassa;</li><li>bonus e promozioni attivi, da leggere nelle rispettive condizioni: rollover, quota minima, giochi esclusi.</li></ul>
+<h2>Depositi e prelievi dall'area personale</h2>
+<p>Le modalità effettivamente attive si controllano nella cassa del conto. Tra i metodi tipici del mercato italiano: carte Visa e Mastercard, PostePay, bonifico bancario, Skrill e Neteller, Paysafecard per i depositi, ricarica tramite agenzia o PVR. L'elenco fotografa i sistemi più diffusi in Italia e non significa che il bookmaker li abbia tutti; importi minimi, commissioni e limiti giornalieri si leggono direttamente nella schermata di pagamento.</p>
+<p>Con carta o wallet il deposito risulta accreditato subito, il bonifico se la prende con calma. I prelievi vengono elaborati in genere in <b>1–5 giorni lavorativi</b>, ai quali si somma il tempo della tua banca o del provider. Il conto deve essere verificato e lo strumento di pagamento intestato al titolare del conto gioco: carta o IBAN di un familiare portano a richieste di documentazione aggiuntiva, quando non al blocco dell'operazione.</p>
+<h2>Assistenza clienti ScommessaBet</h2>
+<p>Per i problemi di autenticazione c'è l'indirizzo <b>helpdesk@vincitu.net</b>, collegato al circuito Vincitu. Nel messaggio metti lo <b>username</b>, il dispositivo, il browser e il testo esatto dell'errore, copiato così com'è. La password no, mai.</p>
+<p>Un'e-mail che ottiene risposta contiene:</p>
+<ul><li>username del conto;</li><li>data e ora del tentativo;</li><li>messaggio visualizzato, per esempio “Autenticazione fallita”;</li><li>dispositivo e versione del browser;</li><li>screenshot, se l'hai, senza saldo, documenti o dati di pagamento in chiaro.</li></ul>
+<p>Esiste poi un servizio prenotabile chiamato <b>“Assistenza PVR”</b>, associato a Via Giuseppe Antonio Pasquale, Napoli, pensato per punti vendita e ricariche. Il pulsante “Accedi” che vedi sulla piattaforma di prenotazione riguarda l'account di quel servizio, non il tuo conto scommesse.</p>
+<p>Orari, chat e numero telefonico non risultano confermati nei materiali disponibili. Per i tempi di risposta e gli altri canali, verifica le opzioni mostrate nella tua area personale.</p>
+<h2>Domande frequenti sull'accesso a ScommessaBet</h2>
+<h3>Perché compare “Autenticazione fallita”?</h3>
+<p>Il sistema non riconosce la combinazione inserita, oppure non riesce a completare la sessione. Controlla username, Caps Lock e password; poi abilita i cookie necessari e riprova con un browser aggiornato.</p>
+<h3>Posso accedere con l'e-mail invece dello username?</h3>
+<p>Il modulo accetta in genere entrambi. Se l'indirizzo non passa, usa lo username creato in fase di registrazione o chiedine il recupero all'assistenza.</p>
+<h3>Perché il sito torna continuamente alla schermata di login?</h3>
+<p>Nove volte su dieci sono i cookie tecnici bloccati. Cancella cache e cookie, riabilita quelli necessari e spegni per un momento VPN o estensioni che rimaneggiano la navigazione.</p>
+<h3>Esiste un'app per Android?</h3>
+<p>L'app documentata è quella iOS. Una versione Android o un APK ufficiale non risultano confermati dai materiali consultati; dal browser mobile, comunque, i problemi di compatibilità non si presentano.</p>
+<h3>Il pulsante “Accedi” sulla pagina di prenotazione apre il conto gioco?</h3>
+<p>No. Quel pulsante ti autentica sulla piattaforma usata per prenotare l'Assistenza PVR, e quelle credenziali non coincidono necessariamente con quelle del conto scommesse.</p>
+<h3>Quanto tempo richiede un prelievo?</h3>
+<p>In genere da uno a cinque giorni lavorativi dopo i controlli sul conto. Metodo scelto, verifica dell'identità e banca ricevente spostano la data finale.</p></article>
+    
+    <div class="cfoot"><a href="/">Home</a><a href="/scommesse/">Scommesse</a><a href="/app/">App</a><a href="/casino/">Casinò</a><a href="/poker/">Poker</a><a href="/recensioni/">Recensioni</a></div>
+  </main>
+</div></div>
+
+<footer class="ft2"><div class="wrap">
+  <div class="cols">
+    <div>
+      <img class="flg" src="/assets/logo.png" alt="ScommessaBet">
+      <p>Confronto indipendente di piattaforme di scommesse sportive e casinò aperte ai
+      giocatori italiani. Non siamo l'operatore e non gestiamo conti di gioco.</p>
+    </div>
+    <div><h4>Sezioni</h4><ul><li><a href="/">Home</a></li><li><a href="/scommesse/">Scommesse</a></li><li><a href="/app/">App</a></li><li><a href="/casino/">Casinò</a></li><li><a href="/poker/">Poker</a></li><li><a href="/accesso/">Accesso</a></li><li><a href="/recensioni/">Recensioni</a></li></ul></div>
+    <div><h4>Piattaforme attive</h4><ul><li><a href="/referral-link?sub_id_1=n1" rel="nofollow">N1 Bet</a></li><li><a href="/referral-link?sub_id_1=slotlair" rel="nofollow">SlotLair</a></li><li><a href="/referral-link?sub_id_1=winita" rel="nofollow">Winnita</a></li><li><a href="/referral-link?sub_id_1=bc" rel="nofollow">BC Game</a></li></ul></div>
+  </div>
+  <div class="cmp">
+    <span class="age">18+</span>
+    <p>Il gioco è vietato ai minori di 18 anni. Il gioco può causare dipendenza patologica.
+    Gioca responsabilmente.</p>
+  </div>
+</div></footer>
+<a class="sticky" id="sticky" href="/referral-link?sub_id_1=n1" rel="nofollow">
+  <span class="sl"><img src="/assets/logos/n1bet-logo.svg" alt="N1 Bet"></span>
+  <span class="si"><b>N1 Bet · attiva oggi</b><span>Bonus fino a 5.000 € + 200 giri gratis</span></span>
+  <span class="sb">GIOCA ORA</span>
+</a>
+<script>
+(function(){var s=document.getElementById('sticky');
+addEventListener('scroll',function(){s.classList.toggle('show',scrollY>320)},{passive:true});})();
+</script>
+</body>
+</html>
